@@ -1,0 +1,71 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm p-4 rounded-4">
+                <h3 class="fw-bold mb-4 text-center">Edit Your Listing</h3>
+
+                <form class="needs-validation" method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate enctype="multipart/form-data">
+                    
+                    <!-- Title -->
+                    <div class="mb-3">
+                        <label for="title" class="form-label fw-semibold">Title</label>
+                        <input class="form-control rounded-3" type="text" name="listing[title]" value="<%= listing.title %>" required>
+                        <div class="valid-feedback">Title looks good!</div>
+                        <div class="invalid-feedback">Please enter a title</div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-3">
+                        <label for="description" class="form-label fw-semibold">Description</label>
+                        <textarea class="form-control rounded-3" name="listing[description]" rows="4" required><%= listing.description %></textarea>
+                        <div class="invalid-feedback">Please enter a short description</div>
+                    </div>
+
+                    <!-- Existing Image -->
+                    <div class="mb-3 text-center">
+                        <% if (originalImageUrl.includes("res.cloudinary.com")) { %>
+                            <img src="<%= originalImageUrl %>" alt="Listing Image" class="img-fluid rounded-3 shadow-sm">
+                        <% } else { %>
+                            <img src="<%= originalImageUrl %>" alt="Listing Image" style="width:250px; height:300px; object-fit:cover;" class="rounded-3 shadow-sm">
+                        <% } %>
+                    </div>
+
+                    <!-- Upload New Image -->
+                    <div class="mb-3">
+                        <label for="image" class="form-label fw-semibold">Update Image</label>
+                        <input class="form-control rounded-3" name="listing[image]" type="file">
+                        <div class="invalid-feedback">Upload a new image if needed</div>
+                    </div>
+
+                    <!-- Price & Country -->
+                    <div class="row g-3">
+                        <div class="mb-3 col-md-4">
+                            <label for="price" class="form-label fw-semibold">Price</label>
+                            <input class="form-control rounded-3" type="number" name="listing[price]" value="<%= listing.price %>" required>
+                            <div class="invalid-feedback">Price should be valid</div>
+                        </div>
+                        <div class="mb-3 col-md-8">
+                            <label for="country" class="form-label fw-semibold">Country</label>
+                            <input class="form-control rounded-3" type="text" name="listing[country]" value="<%= listing.country %>" required>
+                            <div class="invalid-feedback">Country should be valid</div>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="mb-3">
+                        <label for="location" class="form-label fw-semibold">Location</label>
+                        <input class="form-control rounded-3" type="text" name="listing[location]" value="<%= listing.location %>" required>
+                        <div class="invalid-feedback">Location should be valid</div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center mt-4">
+                        <button class="btn btn-gradient w-50 rounded-pill fw-bold py-2 edit-bttn" type="submit">Update Listing</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

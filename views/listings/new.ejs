@@ -1,0 +1,63 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm p-4 rounded-4">
+                <h3 class="fw-bold mb-4 text-center">Create a New Listing</h3>
+
+                <form class="needs-validation" method="POST" action="/listings" novalidate enctype="multipart/form-data">
+
+                    <!-- Title -->
+                    <div class="mb-3">
+                        <label for="title" class="form-label fw-semibold">Title</label>
+                        <input class="form-control rounded-3" type="text" name="listing[title]" placeholder="Add a catchy title" required>
+                        <div class="valid-feedback">Title looks good!</div>
+                        <div class="invalid-feedback">Please enter a title</div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-3">
+                        <label for="description" class="form-label fw-semibold">Description</label>
+                        <textarea class="form-control rounded-3" name="listing[description]" rows="4" placeholder="Describe your listing" required></textarea>
+                        <div class="invalid-feedback">Please enter a short description</div>
+                    </div>
+
+                    <!-- Upload Image -->
+                    <div class="mb-3">
+                        <label for="image" class="form-label fw-semibold">Upload Image</label>
+                        <input class="form-control rounded-3" type="file" name="listing[image]" required>
+                    </div>
+
+                    <!-- Price & Country -->
+                    <div class="row g-3">
+                        <div class="mb-3 col-md-4">
+                            <label for="price" class="form-label fw-semibold">Price (CHF)</label>
+                            <input class="form-control rounded-3" type="number" name="listing[price]" placeholder="1,199" required>
+                            <div class="invalid-feedback">Price should be valid</div>
+                        </div>
+
+                        <div class="mb-3 col-md-8">
+                            <label for="country" class="form-label fw-semibold">Country</label>
+                            <input class="form-control rounded-3" type="text" name="listing[country]" placeholder="Enter country" required>
+                            <div class="invalid-feedback">Country should be valid</div>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="mb-3">
+                        <label for="location" class="form-label fw-semibold">Location</label>
+                        <input class="form-control rounded-3" type="text" name="listing[location]" placeholder="Enter location" required>
+                        <div class="invalid-feedback">Location should be valid</div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center mt-4">
+                        <button class="btn btn-gradient w-50 rounded-pill fw-bold py-2 add-bttn" type="submit">Add Listing</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
