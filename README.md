@@ -104,7 +104,7 @@ cd wonderlust
 npm install
 ```
 
-3. Create a `.env` file with your own credentials (do **not** push real keys to GitHub):
+3. Create a `.env` file with your own credentials
 
 ```
 CLOUD_NAME=your_cloud_name
